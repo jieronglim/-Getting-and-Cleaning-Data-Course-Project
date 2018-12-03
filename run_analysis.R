@@ -22,7 +22,7 @@ if (file.exists(dirFile) == FALSE) {
   unzip(dataFileZIP)
 }
 
-## 1. Merges the training and the test sets to create one data set:
+## 1. Read the data sets:
 x_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE)
 X_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE)
 y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE)
@@ -30,11 +30,11 @@ y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE)
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE)
 subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE)
 
-# Combines data table (train vs test) by rows
+# Merge the datasets (train vs test) by rows
 x <- rbind(x_train, X_test)
 y <- rbind(y_train, y_test)
 s <- rbind(subject_train, subject_test)
-## 2. Extracts only the measurements on the mean and standard deviation for each measurement:
+## 2. Extracts the relevant data of the measurements on the mean and standard deviation for each measurement:
 # Read features labels
 features <- read.table("./UCI HAR Dataset/features.txt")
 # Friendly names to features column
